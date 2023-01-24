@@ -13,6 +13,7 @@ public class RequestHeaderServlet extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         printStartLine(request);
+        printHeaders(request);
     }
 
     private static void printStartLine(HttpServletRequest request) {
@@ -29,6 +30,16 @@ public class RequestHeaderServlet extends HttpServlet {
                 request.getQueryString());
         System.out.println("request.isSecure() = " + request.isSecure()); //https 사용 유무
         System.out.println("--- REQUEST-LINE - end ---");
+        System.out.println();
+    }
+
+    //Header의 모든 정보
+    private void printHeaders(HttpServletRequest request) {
+        System.out.println("--- Headers - start ---");
+
+        request.getHeaderNames().asIterator()
+                .forEachRemaining(headerName -> System.out.println(headerName + ": " + request.getHeader(headerName)));
+        System.out.println("--- Headers - end ---");
         System.out.println();
     }
 }

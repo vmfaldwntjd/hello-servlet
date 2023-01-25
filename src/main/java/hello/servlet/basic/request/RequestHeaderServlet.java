@@ -24,13 +24,9 @@ public class RequestHeaderServlet extends HttpServlet {
         System.out.println("request.getMethod() = " + request.getMethod()); //GET
         System.out.println("request.getProtocol() = " + request.getProtocol()); //HTTP/1.1
         System.out.println("request.getScheme() = " + request.getScheme()); //http
-        // http://localhost:8080/request-header
-        System.out.println("request.getRequestURL() = " + request.getRequestURL());
-        // /request-header
-        System.out.println("request.getRequestURI() = " + request.getRequestURI());
-        //username=hi
-        System.out.println("request.getQueryString() = " +
-                request.getQueryString());
+        System.out.println("request.getRequestURL() = " + request.getRequestURL()); // http://localhost:8080/request-header
+        System.out.println("request.getRequestURI() = " + request.getRequestURI()); // /request-header
+        System.out.println("request.getQueryString() = " + request.getQueryString()); //username=hi
         System.out.println("request.isSecure() = " + request.isSecure()); //https 사용 유무
         System.out.println("--- REQUEST-LINE - end ---");
         System.out.println();
@@ -59,7 +55,8 @@ public class RequestHeaderServlet extends HttpServlet {
                 .forEachRemaining(locale -> System.out.println("locale = " + locale));
         System.out.println("request.getLocale() = " + request.getLocale());
         System.out.println();
-        System.out.println("[cookie 편의 조회]"); if (request.getCookies() != null) {
+        System.out.println("[cookie 편의 조회]");
+        if (request.getCookies() != null) {
             for (Cookie cookie : request.getCookies()) {
                 System.out.println(cookie.getName() + ": " + cookie.getValue());
             } }

@@ -2,6 +2,7 @@ package hello.servlet.basic.response;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +24,8 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setHeader("my-header", "hello"); // 내가 만든 헤더
 
         //[Header 편의 메서드]
-        content(response);
+        //content(response);
+        cookie(response);
 
         PrintWriter writer = response.getWriter();
         writer.println("안녕하세요");
@@ -36,5 +38,13 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setContentType("text/plain");
         response.setCharacterEncoding("utf-8");
         //response.setContentLength(2); //(생략시 자동 생성)
+    }
+
+    private void cookie(HttpServletResponse response) {
+        //Set-Cookie: myCookie=good; Max-Age=600;
+        // response.setHeader("Set-Cookie", "myCookie=good; Max-Age=600");
+        Cookie cookie = new Cookie("myCookie", "good");
+        cookie.setMaxAge(600); //600초
+        response.addCookie(cookie); //윗 주석의 마지막 내용처럼 된다.
     }
 }

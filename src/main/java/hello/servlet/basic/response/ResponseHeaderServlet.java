@@ -17,12 +17,12 @@ public class ResponseHeaderServlet extends HttpServlet {
         response.setStatus(HttpServletResponse.SC_OK); // 전송 상태 확인
 
         //[response-headers]
-        response.setHeader("Content-Type", "text/plain"); // 텍스트 타입
+        response.setHeader("Content-Type", "text/plain;charset=utf-8"); // 텍스트 타입
         response.setHeader("Cache-control", "no-cache, no-store, must-revalidate"); // 캐시 무효화
         response.setHeader("Pragma", "no-cache");
         response.setHeader("my-header", "hello"); // 내가 만든 헤더
 
         PrintWriter writer = response.getWriter();
-        writer.println("ok");
+        writer.println("안녕하세요");
     }
 }

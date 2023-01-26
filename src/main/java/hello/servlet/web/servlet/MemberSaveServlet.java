@@ -1,5 +1,6 @@
 package hello.servlet.web.servlet;
 
+import hello.servlet.domain.member.Member;
 import hello.servlet.domain.member.MemberRepository;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,11 @@ public class MemberSaveServlet extends HttpServlet {
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("MemberSaveServlet.service");
+        String userName = request.getParameter("username");
+        int age = Integer.parseInt(request.getParameter("age"));
 
+        Member member = new Member(userName, age);
+        memberRepository.save(member);
     }
 }

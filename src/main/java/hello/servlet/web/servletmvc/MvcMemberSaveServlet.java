@@ -3,6 +3,7 @@ package hello.servlet.web.servletmvc;
 import hello.servlet.domain.member.Member;
 import hello.servlet.domain.member.MemberRepository;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +24,13 @@ public class MvcMemberSaveServlet extends HttpServlet {
 
         Member member = new Member(userName, age);
         memberRepository.save(member);
-        
+
+        //Model에 데이터를 보관하기
+        request.setAttribute("member", member);
+
+        //데이터 뷰로 넘겨주기
+        String viewPath = "/WEB-INF/views/save-result.jsp";
+        RequestDispatcher dispatcher = request.getRequestDispatcher(viewPath);
+        dispatcher.forward(request, response);
     }
 }

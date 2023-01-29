@@ -18,4 +18,3 @@ public class MvcMemberFormServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
-ㅌ

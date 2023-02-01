@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
 
@@ -18,8 +20,20 @@ public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
 
     @Override
     public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
-        return null;
+        ControllerV3 controller = (ControllerV3) handler;
+
+        Map<String, String> paramMap = createParamMap(request);
+        ModelView modelView = controller.process(paramMap);
+
+        return modelView;
     }
 
+    private static Map<String, String> createParamMap(HttpServletRequest request) {
+        Map<String, String> paraMap = new HashMap<>();
+
+        request.getParameterNames().asIterator()
+                .forEachRemaining(paramName -> paraMap.put(paramName, request.getParameter(paramName)));
+        return paraMap;
+    }
 
 }

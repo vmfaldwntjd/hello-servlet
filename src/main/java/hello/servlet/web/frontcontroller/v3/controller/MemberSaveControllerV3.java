@@ -12,9 +12,9 @@ public class MemberSaveControllerV3 implements ControllerV3 {
     private MemberRepository memberRepository = MemberRepository.getInstance(); //싱글톤이기 때문에 getInstance로 받아오기
 
     @Override
-    public ModelView process(Map<String, String> paraMap) {
-        String userName = paraMap.get("userName");
-        int age = Integer.parseInt(paraMap.get("age"));
+    public ModelView process(Map<String, String> paramMap) {
+        String userName = paramMap.get("userName");
+        int age = Integer.parseInt(paramMap.get("age"));
 
         Member member = new Member(userName, age);
 

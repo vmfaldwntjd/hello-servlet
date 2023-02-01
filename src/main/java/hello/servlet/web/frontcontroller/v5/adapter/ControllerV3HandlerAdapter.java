@@ -17,7 +17,9 @@ public class ControllerV3HandlerAdapter implements MyHandlerAdapter {
     }
 
     @Override
-    public ModelView handle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public ModelView handle(HttpServletRequest request, HttpServletResponse response, Object handler) throws ServletException, IOException {
         return null;
     }
+
+
 }

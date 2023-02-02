@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
+@RequestMapping("/springmvc/v2/members")
 public class SpringMemberControllerV2 {
 
     private MemberRepository memberRepository = MemberRepository.getInstance(); //싱글톤이기 때문에 getInstance로 받아오기
 
-    @RequestMapping("/springmvc/v2/members/new-form")
+    @RequestMapping("/new-form")
     public ModelAndView newForm() {
         return new ModelAndView("new-form");
     }
 
 
-    @RequestMapping("/springmvc/v2/members/save")
+    @RequestMapping("/save")
     public ModelAndView save(HttpServletRequest request, HttpServletResponse response) {
         String userName = request.getParameter("userName");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -35,7 +36,7 @@ public class SpringMemberControllerV2 {
         return modelAndView;
     }
 
-    @RequestMapping("/springmvc/v2/members")
+    @RequestMapping("")
     public ModelAndView members() {
         List<Member> members = memberRepository.findAll();
 

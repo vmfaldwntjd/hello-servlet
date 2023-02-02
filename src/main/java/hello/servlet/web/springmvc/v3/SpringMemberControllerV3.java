@@ -24,11 +24,11 @@ public class SpringMemberControllerV3 {
 
     @RequestMapping("/save")
     public String save(
-            @RequestParam("userName") String userName,
+            @RequestParam("username") String username,
             @RequestParam("age") int age,
             Model model
     ) {
-        Member member = new Member(userName, age);
+        Member member = new Member(username, age);
         memberRepository.save(member);
 
         model.addAttribute("member", member);
